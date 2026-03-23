@@ -1,119 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { AppBar, Toolbar, Box, Container, Paper, Typography } from '@mui/material';
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <AppBar position="static">
+      <Toolbar sx={{ bgcolor:'RebeccaPurple' }}></Toolbar>
+    </AppBar>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
+        <Container sx={{ flex: 1 }}>
+          <Paper elevation={2}>
+            <Typography variant="h2">Encrypt</Typography>
+            <Typography variant="body1">Input plain text here / view plaintext message</Typography>
+          </Paper>
+        </Container>
+        <Container sx={{ flex: 1 }}>
+          <Paper elevation={2}>
+            <Typography variant="h2">Arrange</Typography>
+            <Typography variant="body1">Arrange grid here</Typography>
+            <Container sx={{ display: 'flex', flexWrap: 'wrap' }}>
+              <Paper elevation={2} sx={{  width: '20%' }}>A</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>B</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>C</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>D</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>E</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>F</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>G</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>H</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>I</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>K</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>L</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>M</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>N</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>O</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>P</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>Q</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>R</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>S</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>T</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>U</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>V</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>W</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>X</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>Y</Paper>
+              <Paper elevation={2} sx={{  width: '20%' }}>Z</Paper>
+            </Container>
+          </Paper>
+        </Container>
+        <Container sx={{ flex: 1 }}>
+          <Paper elevation={2}>
+            <Typography variant="h2">Decrypt</Typography>
+            <Typography variant="body1">Input ciphered text here / view encrypted text here</Typography>
+          </Paper>
+        </Container>
+      </Box>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import { AppBar, Toolbar, Box, Container, Paper, Typography } from '@mui/material';
+import { AppBar, Toolbar, Box, Container, Paper, TextField, Typography } from '@mui/material';
 
 function App() {
 
@@ -15,6 +15,7 @@ function App() {
           <Paper elevation={2}>
             <Typography variant="h2">Encrypt</Typography>
             <Typography variant="body1">Input plain text here / view plaintext message</Typography>
+            <TextField label="Enter your input" variant="outlined" />
           </Paper>
         </Container>
         <Container sx={{ flex: 1 }}>
@@ -54,6 +55,7 @@ function App() {
           <Paper elevation={2}>
             <Typography variant="h2">Decrypt</Typography>
             <Typography variant="body1">Input ciphered text here / view encrypted text here</Typography>
+            <TextField label="Enter your input" variant="outlined" />
           </Paper>
         </Container>
       </Box>

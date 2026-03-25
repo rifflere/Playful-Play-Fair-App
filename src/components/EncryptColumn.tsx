@@ -2,11 +2,11 @@ import { processInput } from '../utils/processInput';
 import { Container, Paper, TextField, Typography } from '@mui/material';
 
 interface EncryptColumnProps {
-  inputText: string;
-  setInputText: (key: string) => void
+  encryptText: string;
+  setEncryptText: (key: string) => void
 }
 
-function EncryptColumn({ inputText, setInputText }: EncryptColumnProps) {
+function EncryptColumn({ encryptText, setEncryptText }: EncryptColumnProps) {
   return (
     <Container sx={{ flex: 1 }}>
       <Paper elevation={2}>
@@ -14,11 +14,11 @@ function EncryptColumn({ inputText, setInputText }: EncryptColumnProps) {
         <TextField 
           label="Enter your input" 
           variant="outlined" 
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
+          value={encryptText}
+          onChange={(e) => setEncryptText(e.target.value)}
           inputProps={{ maxLength: 100 }}/>
         <Typography variant="body1">Text to encrypt: </Typography>
-        <Typography variant="body2">{ processInput(inputText) }</Typography>
+        <Typography variant="body2">{ processInput(encryptText) }</Typography>
       </Paper>
     </Container>
   );

@@ -8,7 +8,7 @@ import { AppBar, Toolbar, Box} from '@mui/material';
 const alphabet = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 function App() {
-  const [inputText, setInputText] = useState<string>("");
+  const [encryptText, setEncryptText] = useState<string>("");
   const [cipherKey, setCipherKey] = useState<string[]>([]);
   const remaining = alphabet.filter(l => ! cipherKey.includes(l));
   const fullGrid = [...cipherKey, ...remaining];
@@ -20,7 +20,7 @@ function App() {
     </AppBar>
 
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
-        <EncryptColumn inputText={inputText} setInputText={setInputText} />
+        <EncryptColumn encryptText={encryptText} setEncryptText={setEncryptText} />
         <ArrangeColumn fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
         <DecryptColumn />
       </Box>

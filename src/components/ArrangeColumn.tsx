@@ -31,7 +31,7 @@ function ArrangeColumn({ fullGrid, setCipherKey, cipherKey }: ArrangeColumnProps
                 <Typography variant="body1">Arrange grid here</Typography>
                 <Container sx={{ display: 'flex', flexWrap: 'wrap' }}>
                     {fullGrid.map((char) => (
-                        <Letter key={char} char={char}/>
+                        <Letter key={char} char={char} isKey={cipherKey.includes(char)}/>
                     ))}
                 </Container>
                 </Paper>

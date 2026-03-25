@@ -20,7 +20,7 @@ function App() {
 
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
         <EncryptColumn />
-        <ArrangeColumn fullGrid={fullGrid} setCipherKey={setCipherKey} />
+        <ArrangeColumn fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
         <DecryptColumn />
       </Box>
     </>

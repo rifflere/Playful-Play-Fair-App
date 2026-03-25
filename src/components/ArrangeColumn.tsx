@@ -4,9 +4,10 @@ import Letter from './Letter';
 interface ArrangeColumnProps {
   fullGrid: string[];
   setCipherKey: (key: string[]) => void;
+  cipherKey: string[];
 }
 
-function ArrangeColumn({ fullGrid, setCipherKey }: ArrangeColumnProps) {
+function ArrangeColumn({ fullGrid, setCipherKey, cipherKey }: ArrangeColumnProps) {
     return (
     <Container sx={{ flex: 1 }}>
         <Paper elevation={2}>

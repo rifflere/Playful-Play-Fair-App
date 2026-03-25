@@ -1,6 +1,8 @@
 import { Container, Paper, TextField, Typography } from '@mui/material';
 
+
 function EncryptColumn() {
+
   return (
     <Container sx={{ flex: 1 }}>
       <Paper elevation={2}>

@@ -13,7 +13,6 @@ function Letter({ char } : LetterProps) {
             ref={setNodeRef} 
             {...attributes} 
             {...listeners} 
-            elevation={2} 
             sx={{ width: '20%',
                 transform: CSS.Transform.toString(transform),
                 transition,

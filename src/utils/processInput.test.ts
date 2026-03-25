@@ -4,18 +4,27 @@ import { processInput } from './processInput';
 describe('processInput', () => {
     it('converts to uppercase', () => {
         expect(processInput('this')).toBe('THIS');
+        expect(processInput('that')).toBe('THAT');
     })
 
     it('removes spaces and punctuation', () => {
         expect(processInput('hey, there!')).toBe('HEYTHERE');
+        expect(processInput('!!!')).toBe('');
+        expect(processInput('y e a h')).toBe('YEAH');
     })
 
-    // TESTS PLANNED
-    // 'hello' -> 'HELXLO' // one double letter
-    // 'jump' -> 'IUMP' // handles J -> I conversion
-    // 'balloon' -> 'BALXLOON' // two double letters
-    // 'hi' -> 'HI' // 2-letter uppercase
-    // '' -> '' // handles empty string
-    // '1a2b' -> 'AB' // removes numbers
-    // '' -> '' removes spaces and punctuation
+    it('converts "J" to "I"', () => {
+        expect(processInput('jump')).toBe('IUMP');
+        expect(processInput('jejune')).toBe('IEIUNE');
+    })
+
+    it('adds an "X" between same letters', () => {
+        expect(processInput('hello')).toBe('HELXLO');
+        expect(processInput('balloon')).toBe('BALXLOON');
+    })
+
+    it('adds an "X" to the end of odd-length strings', () => {
+        expect(processInput('hey')).toBe('HEYX');
+        expect(processInput('i')).toBe('IX');
+    })
 })

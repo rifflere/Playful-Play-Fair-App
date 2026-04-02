@@ -10,7 +10,7 @@ interface InputColumnProps {
 function InputColumn({ mode, inputText, setInputText }: InputColumnProps) {
   return (
     <Container sx={{ flex: 1 }}>
-      <Paper elevation={2}>
+      <Paper elevation={2} sx={{ p: 2 }}>
         <Typography variant="h2">Input</Typography>
         <Typography variant="body1">MODE: *{mode}*</Typography>
         <TextField 
@@ -30,7 +30,7 @@ function InputColumn({ mode, inputText, setInputText }: InputColumnProps) {
           <Typography variant="body2">{ digramify(inputText.toUpperCase().replace(/[^A-Z]/g, '')) }</Typography>
         </>}
       </Paper>
-      <Paper elevation={2} sx={{ marginTop: 2, p:2}}>
+      <Paper elevation={2} sx={{ marginTop: 2, p: 2}}>
         <Typography variant="body1">Rules</Typography>
         { mode === "encrypt" &&
           <> 

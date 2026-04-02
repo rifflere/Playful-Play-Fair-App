@@ -28,7 +28,7 @@ function ArrangeColumn({ mode, fullGrid, setCipherKey, cipherKey }: ArrangeColum
     <DndContext onDragEnd={handleDragEnd}>
       <SortableContext items={fullGrid} strategy={rectSortingStrategy}>
             <Container sx={{ flex: 1 }}>
-                <Paper elevation={2}>
+                <Paper elevation={2} sx={{ p: 2 }}>
                 <Typography variant="h2">Arrange</Typography>
                 <Typography variant="body1">MODE: *{mode}*</Typography>
                 <Typography variant="body1">Arrange grid here</Typography>
@@ -40,7 +40,7 @@ function ArrangeColumn({ mode, fullGrid, setCipherKey, cipherKey }: ArrangeColum
                 <Typography variant="body1">Key word: {cipherKey}</Typography>
                 </Paper>
                 { mode === "encrypt" && 
-                <Paper elevation={2} sx={{ marginTop: 2, p:2}}>
+                <Paper elevation={2} sx={{ marginTop: 2, p: 2 }}>
                     <Typography variant="subtitle1">Tip: One of the longest words in the English language with no repeating letters: "uncopyrightable"</Typography>
                 </Paper> }
             </Container>

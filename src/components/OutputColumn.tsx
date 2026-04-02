@@ -9,7 +9,7 @@ interface OutputColumnProps {
 function OutputColumn({ mode, outputText, setOutputText}: OutputColumnProps) {
   return (
     <Container sx={{ flex: 1 }}>
-        <Paper elevation={2}>
+        <Paper elevation={2} sx={{ p: 2 }}>
         <Typography variant="h2">Output</Typography>
         <Typography variant="body1">MODE: *{mode}*</Typography>
         <Typography variant="body1">Encrypted:</Typography>

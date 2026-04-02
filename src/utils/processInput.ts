@@ -12,7 +12,7 @@ export function digramify(text: string) {
 // 1. Convert to uppercase and remove everything but letters, replace J with I
 // 2. If a digram has the same letter twice, insert an "X" between them. (If the double letters are "X", insert a "Q" instead.)
 // 3. If the message has an odd number of letters, add an "X" at the end. (If the last letter is "X", insert a "Q" instead.)
-export function processInput(text: string) {
+export function processEncrypt(text: string) {
     // convert to upper case and remove everything but letters, replace J with I
     const filtered_text = text.toUpperCase().replace(/[^A-Z]/g, '').replaceAll("J","I");
 
@@ -43,15 +43,23 @@ export function processInput(text: string) {
     return digramify(result);
 }
 
-export function encrypt(text: string, key: string) {
+export function processDecrypt(text: string) {
+    // 1. uppercase, remove non-letters
+    // 2. check even length — if not, return error
+    // 3. check no double-letter digrams — if found, return error  
+    // 4. if valid, return digramified text
+    return text;
+}
+
+export function encrypt(text: string, keyGrid: string[]) {
 
     // convert key into into an object mapping letters to their coordinates in the grid <- consider turning this into helper function
     // process each digram in the input according to the rules of the Playfair cipher, using the key grid for reference
     // return the resulting string
 
-    return "";
+    return text;
 }
 
-export function decipher(text: string, key: string) {
-    return "";
+export function decrypt(text: string, keyGrid: string[]) {
+    return text;
 }

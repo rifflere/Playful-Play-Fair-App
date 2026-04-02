@@ -4,6 +4,7 @@ import ArrangeColumn from './components/ArrangeColumn';
 import OutputColumn from './components/OutputColumn';
 import { useState } from 'react';
 import { AppBar, Toolbar, Box, ToggleButton, ToggleButtonGroup, Typography} from '@mui/material';
+import { processEncrypt, processDecrypt, encrypt, decrypt } from './utils/processInput';
 
 const alphabet = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
@@ -11,9 +12,12 @@ function App() {
   const [mode, setMode] = useState<'encrypt' | 'decrypt'>("encrypt");
   const [inputText, setInputText] = useState<string>("");
   const [cipherKey, setCipherKey] = useState<string[]>([]);
-  const [outputText, setOutputText] = useState<string>("");
+  // const [outputText, setOutputText] = useState<string>("");
   const remaining = alphabet.filter(l => ! cipherKey.includes(l));
   const fullGrid = [...cipherKey, ...remaining];
+
+  const processedText = mode === 'encrypt' ? processEncrypt(inputText) : processDecrypt(inputText);
+  const outputText = mode === 'encrypt' ? encrypt(processedText, fullGrid) : decrypt(processedText, fullGrid);
 
   return (
     <>
@@ -28,9 +32,9 @@ function App() {
     </AppBar>
 
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
-      <InputColumn mode={mode} inputText={inputText} setInputText={setInputText} />
+      <InputColumn mode={mode} inputText={inputText} setInputText={setInputText} processedText={processedText} />
       <ArrangeColumn mode={mode} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-      <OutputColumn mode={mode} outputText={outputText} setOutputText={setOutputText} />
+      <OutputColumn mode={mode} outputText={outputText} />
     </Box>
     </>
   )

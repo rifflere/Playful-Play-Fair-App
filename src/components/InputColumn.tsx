@@ -1,13 +1,14 @@
-import { digramify, processInput } from '../utils/processInput';
+import { digramify } from '../utils/processInput';
 import { Container, Paper, TextField, Typography } from '@mui/material';
 
 interface InputColumnProps {
   mode: 'encrypt' | 'decrypt';
   inputText: string;
   setInputText: (key: string) => void
+  processedText: string;
 }
 
-function InputColumn({ mode, inputText, setInputText }: InputColumnProps) {
+function InputColumn({ mode, inputText, setInputText, processedText }: InputColumnProps) {
   return (
     <Container sx={{ flex: 1 }}>
       <Paper elevation={2} sx={{ p: 2 }}>
@@ -23,7 +24,7 @@ function InputColumn({ mode, inputText, setInputText }: InputColumnProps) {
         <Typography variant="body1">Digrams: </Typography>
         { mode==="encrypt" && 
         <>
-          <Typography variant="body2">{ processInput(inputText) }</Typography>
+          <Typography variant="body2">{ processedText }</Typography>
         </>}
         { mode==="decrypt" &&
         <>

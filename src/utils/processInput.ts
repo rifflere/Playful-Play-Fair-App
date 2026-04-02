@@ -42,3 +42,16 @@ export function processInput(text: string) {
     // break into digrams
     return digramify(result);
 }
+
+export function encrypt(text: string, key: string) {
+
+    // convert key into into an object mapping letters to their coordinates in the grid <- consider turning this into helper function
+    // process each digram in the input according to the rules of the Playfair cipher, using the key grid for reference
+    // return the resulting string
+
+    return "";
+}
+
+export function decipher(text: string, key: string) {
+    return "";
+}

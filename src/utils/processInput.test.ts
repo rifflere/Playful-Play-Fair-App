@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { digramify, processInput } from './processInput';
+import { digramify, processInput, encrypt, decipher } from './processInput';
 
 describe('digramify', () => {
     it('breaks input into digrams', () => {
@@ -36,3 +36,15 @@ describe('processInput', () => {
         expect(processInput('max')).toBe('MA XQ');
     })
 })
+
+describe('encrypt', () => {
+    it('encrypts input with the given key', () => {
+        expect(encrypt('hello', 'key')).toBe('');
+    })
+});
+
+describe('decipher', () => {
+    it('deciphers input with the given key', () => {
+        expect(decipher('hello', 'key')).toBe('');
+    })
+});

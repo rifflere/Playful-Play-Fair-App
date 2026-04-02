@@ -1,3 +1,17 @@
+// This helper function turns a string into digrams, without processing the input according to the rules of the Playfair cipher
+export function digramify(text: string) {
+    const digrams = [];
+    for (let i = 0; i < text.length; i += 2) {
+        digrams.push(text.substring(i, i + 2));
+    }
+
+    return digrams.join(' ');
+}
+
+// This function processes the input according to the rules of the Playfair cipher:
+// 1. Convert to uppercase and remove everything but letters, replace J with I
+// 2. If a digram has the same letter twice, insert an "X" between them. (If the double letters are "X", insert a "Q" instead.)
+// 3. If the message has an odd number of letters, add an "X" at the end. (If the last letter is "X", insert a "Q" instead.)
 export function processInput(text: string) {
     // convert to upper case and remove everything but letters, replace J with I
     const filtered_text = text.toUpperCase().replace(/[^A-Z]/g, '').replaceAll("J","I");
@@ -26,12 +40,5 @@ export function processInput(text: string) {
     }
     
     // break into digrams
-    const digrams = [];
-    for (let i = 0; i < result.length; i += 2) {
-        digrams.push(result.substring(i, i + 2));
-    }
-
-    result = digrams.join(' ');
-
-    return result;
+    return digramify(result);
 }

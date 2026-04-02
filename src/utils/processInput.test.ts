@@ -1,11 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { processInput } from './processInput';
+import { digramify, processInput } from './processInput';
+
+describe('digramify', () => {
+    it('breaks input into digrams', () => {
+        expect(digramify('playfair')).toBe('pl ay fa ir');
+    })
+});
 
 describe('processInput', () => {
-    it('breaks input into digrams', () => {
-        expect(processInput('playfair')).toBe('PL AY FA IR');
-    })
-
     it('converts to uppercase', () => {
         expect(processInput('this')).toBe('TH IS');
         expect(processInput('that')).toBe('TH AT');

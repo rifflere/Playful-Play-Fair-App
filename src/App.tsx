@@ -18,9 +18,10 @@ function App() {
   return (
     <>
     <AppBar position="static">
-      <Typography variant="h1" sx={{ flexGrow: 1, textAlign: 'center', bgcolor:'purple', color:'white' }}>Playful Play Fair</Typography>
-      <Toolbar sx={{ bgcolor:'RebeccaPurple' }}></Toolbar>
-      <ToggleButtonGroup sx={{ bgcolor:'purple'}} exclusive>
+      <Toolbar sx={{ bgcolor:'RebeccaPurple' }}>
+        <Typography variant="h3" component="h1" sx={{ flexGrow: 1, textAlign: 'center', color:'white' }}>Playful Play Fair</Typography>
+      </Toolbar>
+      <ToggleButtonGroup sx={{ bgcolor:'RebeccaPurple', display: 'flex', justifyContent: 'center'}} exclusive>
         <ToggleButton value="encrypt" onClick={() => setMode("encrypt")} selected={mode === "encrypt"}>Encrypt</ToggleButton>
         <ToggleButton value="decrypt" onClick={() => setMode("decrypt")} selected={mode === "decrypt"}>Decrypt</ToggleButton>
       </ToggleButtonGroup>

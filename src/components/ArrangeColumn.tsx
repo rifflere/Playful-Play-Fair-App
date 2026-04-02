@@ -5,12 +5,13 @@ import type { DragEndEvent } from '@dnd-kit/core';
 import { SortableContext, rectSortingStrategy, arrayMove } from '@dnd-kit/sortable';
 
 interface ArrangeColumnProps {
-  fullGrid: string[];
-  setCipherKey: (key: string[]) => void;
-  cipherKey: string[];
+    mode: 'encrypt' | 'decrypt';
+    fullGrid: string[];
+    setCipherKey: (key: string[]) => void;
+    cipherKey: string[];
 }
 
-function ArrangeColumn({ fullGrid, setCipherKey, cipherKey }: ArrangeColumnProps) {
+function ArrangeColumn({ mode, fullGrid, setCipherKey, cipherKey }: ArrangeColumnProps) {
     function handleDragEnd(event: DragEndEvent) {
         if (!event.over) return;
 
@@ -23,21 +24,29 @@ function ArrangeColumn({ fullGrid, setCipherKey, cipherKey }: ArrangeColumnProps
     }
 
     return (
+    <>
     <DndContext onDragEnd={handleDragEnd}>
       <SortableContext items={fullGrid} strategy={rectSortingStrategy}>
             <Container sx={{ flex: 1 }}>
                 <Paper elevation={2}>
                 <Typography variant="h2">Arrange</Typography>
+                <Typography variant="body1">MODE: *{mode}*</Typography>
                 <Typography variant="body1">Arrange grid here</Typography>
                 <Container sx={{ display: 'flex', flexWrap: 'wrap' }}>
                     {fullGrid.map((char) => (
                         <Letter key={char} char={char} isKey={cipherKey.includes(char)}/>
                     ))}
                 </Container>
+                <Typography variant="body1">Key word: {cipherKey}</Typography>
                 </Paper>
+                { mode === "encrypt" && 
+                <Paper elevation={2} sx={{ marginTop: 2, p:2}}>
+                    <Typography variant="subtitle1">Tip: One of the longest words in the English language with no repeating letters: "uncopyrightable"</Typography>
+                </Paper> }
             </Container>
         </SortableContext>
     </DndContext>
+    </>
   );
 }
 

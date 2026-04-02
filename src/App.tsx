@@ -1,5 +1,7 @@
-import './App.css'
-import Column from './components/Column';
+import './App.css';
+import InputColumn from './components/InputColumn';
+import ArrangeColumn from './components/ArrangeColumn';
+import OutputColumn from './components/OutputColumn';
 import { useState } from 'react';
 import { AppBar, Toolbar, Box, ToggleButton, ToggleButtonGroup} from '@mui/material';
 
@@ -13,8 +15,6 @@ function App() {
   const remaining = alphabet.filter(l => ! cipherKey.includes(l));
   const fullGrid = [...cipherKey, ...remaining];
 
-  const outputMode = mode === "encrypt" ? "decrypt" : "encrypt";
-
   return (
     <>
     <AppBar position="static">
@@ -26,13 +26,9 @@ function App() {
     </AppBar>
 
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
-      <Column role="input" mode={mode} text={inputText} setText={setInputText} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey}/>
-      <Column role="arrange" mode={mode} text={inputText} setText={setOutputText} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-      <Column role="output" mode={outputMode} text={outputText} setText={setOutputText} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-
-      {/* <EncryptColumn encryptText={encryptText} setEncryptText={setEncryptText} />
-      <ArrangeColumn fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-      <DecryptColumn decryptText={decryptText} setDecryptText={setDecryptText} /> */}
+      <InputColumn mode={mode} inputText={inputText} setInputText={setInputText} />
+      <ArrangeColumn mode={mode} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
+      <OutputColumn mode={mode} outputText={outputText} setOutputText={setOutputText} />
     </Box>
     </>
   )

@@ -18,13 +18,15 @@ describe('processInput', () => {
         expect(processInput('jejune')).toBe('IEIUNE');
     })
 
-    it('adds an "X" between same letters', () => {
+    it('adds an "X" between same letters in digraph positions, or "Q" between paired "X" letters', () => {
         expect(processInput('hello')).toBe('HELXLO');
         expect(processInput('balloon')).toBe('BALXLOON');
+        expect(processInput('xxtra')).toBe('XQXTRA');
     })
 
-    it('adds an "X" to the end of odd-length strings', () => {
+    it('adds an "X" to the end of odd-length strings, or "Q" if the last letter is "X"', () => {
         expect(processInput('hey')).toBe('HEYX');
         expect(processInput('i')).toBe('IX');
+        expect(processInput('max')).toBe('MAXQ');
     })
 })

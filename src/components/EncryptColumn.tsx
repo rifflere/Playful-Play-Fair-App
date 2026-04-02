@@ -17,7 +17,7 @@ function EncryptColumn({ encryptText, setEncryptText }: EncryptColumnProps) {
           value={encryptText}
           onChange={(e) => setEncryptText(e.target.value)}
           inputProps={{ maxLength: 100 }}/>
-        <Typography variant="body1">Text to encrypt: </Typography>
+        <Typography variant="body1">Deciphered: </Typography>
         <Typography variant="body2">{ processInput(encryptText) }</Typography>
       </Paper>
     </Container>

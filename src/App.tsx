@@ -10,6 +10,7 @@ const alphabet = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q
 function App() {
   const [encryptText, setEncryptText] = useState<string>("");
   const [cipherKey, setCipherKey] = useState<string[]>([]);
+  const [decryptText, setDecryptText] = useState<string>("");
   const remaining = alphabet.filter(l => ! cipherKey.includes(l));
   const fullGrid = [...cipherKey, ...remaining];
 
@@ -22,7 +23,7 @@ function App() {
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
         <EncryptColumn encryptText={encryptText} setEncryptText={setEncryptText} />
         <ArrangeColumn fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-        <DecryptColumn />
+        <DecryptColumn decryptText={decryptText} setDecryptText={setDecryptText} />
       </Box>
     </>
   )

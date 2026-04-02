@@ -3,7 +3,7 @@ import InputColumn from './components/InputColumn';
 import ArrangeColumn from './components/ArrangeColumn';
 import OutputColumn from './components/OutputColumn';
 import { useState } from 'react';
-import { AppBar, Toolbar, Box, ToggleButton, ToggleButtonGroup} from '@mui/material';
+import { AppBar, Toolbar, Box, ToggleButton, ToggleButtonGroup, Typography} from '@mui/material';
 
 const alphabet = ['A','B','C','D','E','F','G','H','I','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
@@ -18,6 +18,7 @@ function App() {
   return (
     <>
     <AppBar position="static">
+      <Typography variant="h1" sx={{ flexGrow: 1, textAlign: 'center', bgcolor:'purple', color:'white' }}>Playful Play Fair</Typography>
       <Toolbar sx={{ bgcolor:'RebeccaPurple' }}></Toolbar>
       <ToggleButtonGroup sx={{ bgcolor:'purple'}} exclusive>
         <ToggleButton value="encrypt" onClick={() => setMode("encrypt")} selected={mode === "encrypt"}>Encrypt</ToggleButton>

@@ -19,9 +19,21 @@ function InputColumn({ mode, inputText, setInputText }: InputColumnProps) {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           inputProps={{ maxLength: 100 }}/>
-        <Typography variant="body1">Deciphered: </Typography>
-        <Typography variant="body2">{ processInput(inputText) }</Typography>
+        
+        { mode==="encrypt" && 
+        <>
+          <Typography variant="body1">Digrams: </Typography>
+          <Typography variant="body2">{ processInput(inputText) }</Typography>
+        </>}
       </Paper>
+      { mode === "encrypt" &&
+      <Paper elevation={2} sx={{ marginTop: 2, p:2}}>
+        <Typography variant="body1">Rules</Typography>
+        <Typography variant="body2">1. Break message into digrams (groups of 2 letters)</Typography>
+        <Typography variant="body2">2. Change any "J" to an "I"</Typography>
+        <Typography variant="body2">3. If a digram has the same letter twice, insert an "X" between them. (If the double letters are "X", insert a "Q" instead.)</Typography>
+        <Typography variant="body2">4. If the message has an odd number of letters, add an "X" at the end. (If the last letter is "X", insert a "Q" instead.)</Typography>
+      </Paper> }
     </Container>
   );
 }

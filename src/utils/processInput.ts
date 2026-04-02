@@ -24,6 +24,14 @@ export function processInput(text: string) {
     } else if (result.length % 2 != 0) {
         result += 'Q';
     }
+    
+    // break into digrams
+    const digrams = [];
+    for (let i = 0; i < result.length; i += 2) {
+        digrams.push(result.substring(i, i + 2));
+    }
+
+    result = digrams.join(' ');
 
     return result;
 }

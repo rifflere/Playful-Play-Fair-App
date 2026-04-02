@@ -1,3 +1,5 @@
+import type { ProcessResult } from '../types';
+
 // This helper function turns a string into digrams, without processing the input according to the rules of the Playfair cipher
 export function digramify(text: string) {
     const digrams = [];
@@ -12,14 +14,11 @@ export function digramify(text: string) {
 // 1. Convert to uppercase and remove everything but letters, replace J with I
 // 2. If a digram has the same letter twice, insert an "X" between them. (If the double letters are "X", insert a "Q" instead.)
 // 3. If the message has an odd number of letters, add an "X" at the end. (If the last letter is "X", insert a "Q" instead.)
-export function processEncrypt(text: string) {
-    // convert to upper case and remove everything but letters, replace J with I
+export function processEncrypt(text: string): ProcessResult {
     const filtered_text = text.toUpperCase().replace(/[^A-Z]/g, '').replaceAll("J","I");
 
-    // if letter at odd index followed by a duplicate, insert letter 'X'; unless the letter is 'X', in which case insert 'Q' instead
     let result = "";
     let i = 0;
-
     while (i < filtered_text.length) {
         result += filtered_text[i];
 
@@ -32,23 +31,29 @@ export function processEncrypt(text: string) {
         i++;
     } 
 
-    // if odd length, add X to end; unless the last letter is already an X, in which case add a Q instead
     if (result.length % 2 != 0 && result[result.length - 1] != 'X') {
         result += 'X';
     } else if (result.length % 2 != 0) {
         result += 'Q';
     }
     
-    // break into digrams
-    return digramify(result);
+    return { isValid: true, processedText: digramify(result) };
 }
 
-export function processDecrypt(text: string) {
-    // 1. uppercase, remove non-letters
-    // 2. check even length — if not, return error
-    // 3. check no double-letter digrams — if found, return error  
-    // 4. if valid, return digramified text
-    return text;
+export function processDecrypt(text: string) : ProcessResult {
+    const result = text.toUpperCase().replace(/[^A-Z]/g, '');
+
+    if (result.length % 2 != 0) {
+        return { isValid: false, error: "Input must have an even number of letters" };
+    }
+ 
+    for (let i = 0; i < result.length; i += 2) {
+        if (result[i] == result[i+1]) {
+            return { isValid: false, error: "Input contains double-letter digrams" };
+        }
+    }
+    
+    return { isValid: true, processedText: digramify(result) };
 }
 
 export function encrypt(text: string, keyGrid: string[]) {

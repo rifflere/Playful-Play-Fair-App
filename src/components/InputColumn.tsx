@@ -6,9 +6,10 @@ interface InputColumnProps {
   inputText: string;
   setInputText: (key: string) => void
   processedText: string;
+  isValid: boolean;
 }
 
-function InputColumn({ mode, inputText, setInputText, processedText }: InputColumnProps) {
+function InputColumn({ mode, inputText, setInputText, processedText, isValid }: InputColumnProps) {
   return (
     <Container sx={{ flex: 1 }}>
       <Paper elevation={2} sx={{ p: 2 }}>
@@ -19,7 +20,15 @@ function InputColumn({ mode, inputText, setInputText, processedText }: InputColu
           variant="outlined" 
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          inputProps={{ maxLength: 100 }}/>
+          inputProps={{ maxLength: 100 }}
+        />
+
+        <Typography 
+          variant="body2" 
+          sx={{ color: isValid ? 'inherit' : 'error.main' }}
+        >
+          { processedText }
+        </Typography>
         
         <Typography variant="body1">Digrams: </Typography>
         { mode==="encrypt" && 

@@ -16,7 +16,8 @@ function App() {
   const remaining = alphabet.filter(l => ! cipherKey.includes(l));
   const fullGrid = [...cipherKey, ...remaining];
 
-  const processedText = mode === 'encrypt' ? processEncrypt(inputText) : processDecrypt(inputText);
+  const processResult = mode === 'encrypt' ? processEncrypt(inputText) : processDecrypt(inputText);
+  const processedText = processResult.isValid ? processResult.processedText : processResult.error;
   const outputText = mode === 'encrypt' ? encrypt(processedText, fullGrid) : decrypt(processedText, fullGrid);
 
   return (
@@ -32,9 +33,23 @@ function App() {
     </AppBar>
 
     <Box sx={{ bgcolor:'purple', display:'flex', flexDirection:'row' }}>
-      <InputColumn mode={mode} inputText={inputText} setInputText={setInputText} processedText={processedText} />
-      <ArrangeColumn mode={mode} fullGrid={fullGrid} setCipherKey={setCipherKey} cipherKey={cipherKey} />
-      <OutputColumn mode={mode} outputText={outputText} />
+      <InputColumn 
+        mode={mode} 
+        inputText={inputText} 
+        setInputText={setInputText} 
+        processedText={processedText}
+        isValid={processResult.isValid}
+      />
+      <ArrangeColumn 
+        mode={mode} 
+        fullGrid={fullGrid} 
+        setCipherKey={setCipherKey} 
+        cipherKey={cipherKey} 
+      />
+      <OutputColumn 
+        mode={mode} 
+        outputText={outputText} 
+      />
     </Box>
     </>
   )
